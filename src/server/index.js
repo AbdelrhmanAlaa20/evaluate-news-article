@@ -5,7 +5,7 @@ dotenv.config()
 const fetch = require('node-fetch');
 var path = require('path')
 
-const PORT = 8081
+const port = 8081
 const express = require('express')
 const mockAPIResponse = require('./mockAPI.js')
 const bodyParser = require('body-parser')
@@ -49,13 +49,10 @@ app.post ('/api', async (req, res) => {
             //   'Content-Type': 'application/x-www-form-urlencoded',
             }});
         const dataFetched = await response.json();
-    
-        res.send(dataFetched)
+        res.send(dataFetched);
     }catch(error) {
         console.log(`error, ${error}`);
     }
-
-
 })
 
 app.get('/test', (req, res) => {
@@ -63,9 +60,9 @@ app.get('/test', (req, res) => {
 })
 
 // designates what port the app will listen to for incoming requests
-app.listen(PORT, (error) => {
+app.listen(port, (error) => {
     if (error) throw new Error(error)
-    console.log(`Server listening on port ${PORT}!`)
+    console.log(`Server listening on port ${port}!`)
 })
 
 // TODO: export app to use it in the unit testing

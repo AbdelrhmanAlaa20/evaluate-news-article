@@ -11,6 +11,7 @@ const postToServer= async (url = '', data = {} ) => {
              } );
         try {
             const fetchedData = await response.json()
+            console.log(fetchedData)
             return fetchedData ;
         }catch (err) {
             console.log('error', err)

@@ -1,7 +1,7 @@
 import {checkUrl} from './js/checkURL.js';
 import {postToServer} from './js/postToServer.js';
 
-import './styles/style.scss';
+import './styles/style.css';
 
 
 export { checkUrl };
@@ -15,38 +15,20 @@ window.onload=function(){
     
     const bttnSubmit = document.querySelector('.btn');
 
-bttnSubmit.addEventListener('click', (event) => {
-    event.preventDefault();
-    console.log('event listener works');
-    urlToCheck = document.getElementById('url').value;
-    console.log(urlToCheck);
+    bttnSubmit.addEventListener('click', (event) => {
+        event.preventDefault();
+        let urlToCheck = document.getElementById('url').value;
 
-    handleSubmit();
-
-
-})
+        handleSubmit(urlToCheck);
+    })
 
 }
 
-let urlToCheck;
-
-// const bttnSubmit = document.querySelector('.btn');
-
-// bttnSubmit.addEventListener('click', (event) => {
-//     event.preventDefault();
-//     console.log('event listener works');
-//     urlToCheck = document.getElementById('url').value;
-//     console.log(urlToCheck);
-
-//     handleSubmit();
-
-// })
-
-const handleSubmit = () => {
+const handleSubmit = (urlToCheck) => {
 
     if ( checkUrl(urlToCheck) ) {
-
-      console.log('reached handleSubmit');
+      console.log('handleSubmit');
+      console.log(urlToCheck);
       const updateElements = (res) => {
         document.getElementById("agreement").innerHTML = `Agreement: ${res.agreement}`;
         document.getElementById("subjectivity").innerHTML = `Subjectivity: ${res.subjectivity}`;
@@ -54,9 +36,7 @@ const handleSubmit = () => {
         document.getElementById("irony").innerHTML = `Irony: ${res.irony}`;
         document.getElementById("score_tag").innerHTML = `Score Tag: ${res.score_tag}`;
         }
-    
-
-        postToServer('http://localhost:8081/api', {url: urlToCheck})
+        postToServer('/api', {url: urlToCheck})
         .then ( (res) => {
             updateElements(res);
         })

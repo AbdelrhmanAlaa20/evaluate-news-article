@@ -1,29 +1,66 @@
-# evalute news article
+# Evaluate A News Article with Natural Language Processing
 
-We will build a web tool that allows users to run Natural Language Processing (NLP) on articles or blogs found on other websites. NLP is the ability of an application to understand the human language, written or oral.
+4th project at [Udacity](https://www.udacity.com/course/front-end-web-developer-nanodegree--nd0011) Front End Web Developer Nanodegree program.
 
-You don't have to worry about NLP, because we will make use of an external api called  to interact with their NLP system. This tool will help us classify the information available in the article, like whether the content is subjective (opinion) or objective (fact-based) and whether it is positive, neutral, or negative in tone.
+This project aims to build a web tool that allows users to run Natural Language Processing (NLP) on articles or blogs found on other websites. When a user submits a URL of an article, the web page then dispalys sentiment analysis returned from [meaningcloud API](https://www.meaningcloud.com/products/sentiment-analysis), based on the contents of the article.
+
+## Build Tools
+* HTML
+* CSS
+* JavaScript
+* Node
+* Express
+* Webpack
+* meaningcloud API
+* Jest
+* Workbox
+
 ## Installation
-
-install npm 
-```bash
-npm i 
+Make sure Node and npm are installed from the terminal.
+```
+node -v
+npm -v
 ```
 
-## Usage
-
-```javascript
-# In dev mode
-     npm run build-dev
-
-# In prod mode 
-
-     npm run build-prod
-     npm run start
-   
+1. Move to the project folder
 ```
+cd <project directory>
+```
+2. Clone the repo
+```
+git clone <repo>
+```
+3. Install npm
+```
+npm install
+```
+4. Install loaders and plugins
+```
+# Choose the necessary installation for your development mode
+npm i -D @babel/core @babel/preset-env babel-loader
+npm i -D style-loader node-sass css-loader sass-loader
+npm i -D clean-webpack-plugin
+npm i -D html-webpack-plugin
+npm i -D mini-css-extract-plugin
+npm i -D optimize-css-assets-webpack-plugin terser-webpack-plugin
+```
+5. Sign up for an API key at [meaningcloud.com](https://www.meaningcloud.com/developer/create-account)
 
-## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+6. Configure environment variables using dotenv package
+     1. Install the dotenv package
+     ```
+     npm install dotenv
+     ```
+     2. Create a new `.env` file in the root of your project
+     3. Fill the `.env` file with your API key like this:
+     ```
+     API_KEY=**************************
+     ```
+7. Start the project
 
-Please make sure to update tests as appropriate.
+Command | Action
+:------------: | :-------------:
+`npm run build-prod` | Build project
+`npm start` | Run project
+
+8. Open browser at http://localhost:8081/
